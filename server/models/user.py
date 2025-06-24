@@ -1,4 +1,4 @@
-from app import db  # ✅ relative import
+from server.app import db  # ✅ Correct absolute import
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(db.Model):
