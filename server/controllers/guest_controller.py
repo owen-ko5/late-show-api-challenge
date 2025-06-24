@@ -1,5 +1,3 @@
-# server/controllers/guest_controller.py
-
 from flask import Blueprint, jsonify
 from server.models.guest import Guest
 

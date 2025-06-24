@@ -1,5 +1,3 @@
-# server/controllers/appearance_controller.py
-
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required
 from ..models.appearance import Appearance
@@ -12,11 +10,10 @@ appearance_bp = Blueprint('appearance_bp', __name__)
 def create_appearance():
     data = request.get_json()
 
-    # Validate required fields
     if not all(k in data for k in ('rating', 'guest_id', 'episode_id')):
         return jsonify(error="Missing guest_id, episode_id, or rating"), 400
 
-    # Validate rating value
+    
     try:
         rating = int(data['rating'])
         if not (1 <= rating <= 5):
@@ -24,7 +21,7 @@ def create_appearance():
     except ValueError:
         return jsonify(error="Rating must be an integer"), 400
 
-    # Create and save the appearance
+    
     appearance = Appearance(
         rating=rating,
         guest_id=data['guest_id'],
